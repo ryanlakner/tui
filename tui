@@ -40,7 +40,7 @@ MENU=("Option 1: Update System"
 draw_header() {
   clear
   tput cup 0 0
-  echo "${bold}${blue}=== Simple Bash TUI Skeleton ===${reset}"
+  echo "${bold}${blue}    Simple Bash TUI Skeleton${reset}"
   echo
 }
 
