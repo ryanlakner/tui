@@ -21,6 +21,15 @@ show() {
 rows=$(tput lines)
 cols=$(tput cols)
 
+# Cleanup
+cleanup() {
+  clear
+  show
+  exit 0
+}
+
+trap cleanup EXIT INT TERM HUP
+
 # Menu items
 MENU=("Option 1: Update System"
       "Option 2: List files"
@@ -70,7 +79,7 @@ main() {
           0) clear; echo "${green}Update System:${reset}"; yay -Syu; read -p "Press Enter...";;
           1) clear; echo "${green}Files:${reset}"; ls -lh; read -p "Press Enter...";;
           2) clear; echo "${green}Running custom command...${reset}"; echo "Replace me"; read -p "Press Enter...";;
-          3) clear; show; exit 0;;
+          3) cleanup;;
         esac
         ;;
     esac
