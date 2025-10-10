@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Simple Bash TUI Skeleton
+# Uses tput to control cursor and colors
+
 # Colors
 red=$(tput setaf 1)
 green=$(tput setaf 2)
@@ -7,15 +10,6 @@ yellow=$(tput setaf 3)
 blue=$(tput setaf 4)
 bold=$(tput bold)
 reset=$(tput sgr0)
-
-# Cursor Control
-hide() {
-  tput civis
-}
-
-show() {
-  tput cnorm
-}
 
 # Screen dimensions
 rows=$(tput lines)
@@ -66,10 +60,10 @@ main() {
                 ;;
             "") # Enter key
                 case $choice in
-                    0) clear; echo "${green}Update System:${reset}"; yay -Syu; hide; read -p "Press Enter...";;
+                    0) clear; echo "${green}Update System:${reset}"; yay -Syu; tput civis; read -p "Press Enter...";;
                     1) clear; echo "${green}Files:${reset}"; ls -lh; read -p "Press Enter...";;
                     2) clear; echo "${green}Running custom command...${reset}"; echo "Replace me"; read -p "Press Enter...";;
-                    3) clear; show; exit 0;;
+                    3) clear; tput cnorm; exit 0;;
                 esac
                 ;;
         esac
@@ -77,7 +71,7 @@ main() {
 }
 
 # Hide cursor
-hide
+tput civis
 
 # Main execution
 main
