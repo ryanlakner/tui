@@ -21,7 +21,7 @@ show() {
 rows=$(tput lines)
 cols=$(tput cols)
 
-# Cleanup
+# Exit on Ctrl^C
 cleanup() {
   clear
   show
